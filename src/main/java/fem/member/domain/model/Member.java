@@ -49,7 +49,12 @@ public class Member extends BaseTime {
     }
 
     public void addAuthority(UserRole userRole) {
-        authorities.add(Authority.create(userRole, this));
+        Authority authority = Authority.create(userRole, this);
+        if (authorities.contains(authority)) {
+            throw new IllegalArgumentException("권한이 중복되었습니다.");
+        }
+
+        authorities.add(authority);
     }
 
     public void savePoint(long point) {
