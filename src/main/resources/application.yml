@@ -22,9 +22,11 @@ spring:
     console:
       enabled: true
       path: /h2-console
+  kafka:
+    consumer:
+      group-id: member
 server:
   port: 8083
-
 logging:
   level:
     org.hibernate.SQL: debug
