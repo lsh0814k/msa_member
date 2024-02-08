@@ -62,6 +62,9 @@ public class Member extends BaseTime {
     }
 
     public void usePoint(long point) {
+        if (this.point.getPoint() < point) {
+            throw new IllegalArgumentException("포인트가 부족합니다.");
+        }
         this.point = this.point.removePoint(point);
     }
 }

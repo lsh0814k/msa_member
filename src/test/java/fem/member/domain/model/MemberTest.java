@@ -63,6 +63,16 @@ class MemberTest {
     }
 
     @Test
+    @DisplayName("포인트 차감 - 포인트 부족")
+    void usePoint_not_enough() {
+        Member member = MemberFactory.create("id", "홍길동");
+        member.savePoint(10);
+
+        assertThatThrownBy(() -> member.usePoint(20))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
     @DisplayName("권한 추가_중복된 권한")
     void addAuthority_duplicate() {
         Member member = MemberFactory.create("id", "홍길동");
